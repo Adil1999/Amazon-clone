@@ -1,16 +1,27 @@
 import React, { forwardRef } from "react";
 import "./CheckoutProduct.css";
+import {useSnackbar} from "notistack";
 import { useStateValue } from "./StateProvider";
 
 const CheckoutProduct = forwardRef(({ id, image, title, price, rating, hideButton }, ref) => {
   const [{ }, dispatch] = useStateValue();
+  const {enqueueSnackbar}  = useSnackbar();
 
   const removeFromBasket = () => {
     // remove the item from the basket
+    
+    let variant =  "error";
+
     dispatch({
       type: "REMOVE_FROM_BASKET",
       id: id,
     });
+
+    const truncate = (title) =>
+      title.length > 20 ? `${title.substring(0, 20)}...  ` : title;
+
+    enqueueSnackbar(truncate(title) + "Product added into Basket", { variant });
+
   };
 
   return (

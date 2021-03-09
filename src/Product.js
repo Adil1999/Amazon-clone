@@ -1,13 +1,18 @@
 import React from "react";
 import "./Product.css";
+import { useSnackbar } from "notistack";
 import { useStateValue } from "./StateProvider";
 
 function Product({ id, title, image, price, rating }) {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{}, dispatch] = useStateValue();
+  const { enqueueSnackbar } = useSnackbar();
 
-  console.log("BAsket: ", basket);
+  //console.log("BAsket: ", basket);
 
   const addToBasket = () => {
+
+    let variant = "Success";
+
     // dispatch the item into the data layer
     dispatch({
       type: "ADD_TO_BASKET",
@@ -19,6 +24,12 @@ function Product({ id, title, image, price, rating }) {
         rating: rating,
       },
     });
+
+    const truncate = (title) => title.length > 20 ? `${title.substring(0, 20)}...  ` : title;
+
+    enqueueSnackbar(truncate(title) + "Product added into Basket", {variant});
+
+
   };
 
   return (
