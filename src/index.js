@@ -10,7 +10,7 @@ import { StateProvider } from "./StateProvider";
 ReactDOM.render(
   <React.StrictMode>
     <StateProvider initialState={initialState} reducer={reducer}>
-      <SnackbarProvider maxSnack={3}>
+      <SnackbarProvider maxSnack={1}>
         <App />
       </SnackbarProvider>
     </StateProvider>
