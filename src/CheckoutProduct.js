@@ -20,7 +20,7 @@ const CheckoutProduct = forwardRef(({ id, image, title, price, rating, hideButto
     const truncate = (title) =>
       title.length > 20 ? `${title.substring(0, 20)}...  ` : title;
 
-    enqueueSnackbar(truncate(title) + "Product added into Basket", { variant });
+    enqueueSnackbar(truncate(title) + "Product removed from Basket", { variant });
 
   };
 
