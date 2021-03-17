@@ -40,8 +40,10 @@ const reducer = (state, action) => {
       }
 
     case "EMPTY_BASKET":
+      let newBas = []
       return {
-        
+        ...state,
+        basket: newBas,
       }
 
     default:
