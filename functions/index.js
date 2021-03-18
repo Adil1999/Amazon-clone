@@ -5,7 +5,6 @@ const stripe = require("stripe")(
   "sk_test_51IU6vPBX9TOk71F3qc4AFaXfkE5sxxAgRVOKysWZ9wk8GwvskX8wb335PyEierFRkbNckNwLtxDDAK6oLIn373It00iZwuE89k"
 );
 
-// - App config
 const app = express();
 
 // - Middlewares
@@ -30,6 +29,7 @@ app.post("/payments/create", async (request, response) => {
     clientSecret: paymentIntent.client_secret,
   });
 });
+
 
 // - Listen command
 exports.api = functions.https.onRequest(app);
